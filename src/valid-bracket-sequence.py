@@ -27,3 +27,25 @@
 
 # true if sequence is a valid bracket sequence and false otherwise.
 
+def validBracketSequence(sequence):
+    stack = []
+    
+    for char in sequence:
+        if char in ['(', '{', '[']:
+            stack.append(char)
+        else:
+            if not stack:
+                return False
+            current_char = stack.pop()
+            if current_char == '(':
+                if char != ')':
+                    return False
+            if current_char == '{':
+                if char != '}':
+                    return False
+            if current_char == '[':
+                if char != ']':
+                    return False
+    if stack:
+        return False
+    return True
